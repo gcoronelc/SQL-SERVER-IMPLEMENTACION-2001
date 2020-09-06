@@ -1,6 +1,8 @@
 ![SQL SERVER IMPLEMENTACIÓN](https://raw.githubusercontent.com/gcoronelc/SQL-SERVER-IMPLEMENTACION-2001/master/img/SQL1.png)
 
-# DATOS DEL CURSO
+# DATOS GENERALES
+
+## DATOS DEL CURSO
 
 - Lugar: CEPS-UNI
 - Horario: DOMINGO DE 17 - 21 Horas
@@ -12,7 +14,7 @@
 - Grupo de WS: https://chat.whatsapp.com/LYVxfuNBVfSI6dpcOU9D4J
 
 
-# DOCENTE
+## DATOS DEL DOCENTE
 
 - Docente: Eric Gustavo Coronel Castillo
 - Blog: www.desarrollasoftware.com
