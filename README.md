@@ -1,15 +1,16 @@
-![SQL SERVER IMPLEMENTACIÓN](https://raw.githubusercontent.com/gcoronelc/SQL-SERVER-ADM-002/master/img/sql-adm.png)
+![SQL SERVER IMPLEMENTACIÓN](https://raw.githubusercontent.com/gcoronelc/SQL-SERVER-IMPLEMENTACION-2001/master/img/SQL1.png)
 
 # DATOS DEL CURSO
 
 - Lugar: CEPS-UNI
-- Horario: MARTES Y JUEVES DE 19 a 22 Horas
-- Inicio: 11-FEB-2020
+- Horario: DOMINGO DE 17 - 21 Horas
+- Inicio: 06-SET-2020
 - Duración: 24 Horas
 - Dirección: https://goo.gl/maps/PyC3Ek8MXW3bVZoC7
 - Canal Youtube: https://bit.ly/2HhmZCE
 - Recursos: http://gcoronelc.blogspot.com/p/sql-server.html
-- Grupo de WS: https://chat.whatsapp.com/H6BBebNDZHEAqAk6gTU5ZS
+- Grupo de WS: https://chat.whatsapp.com/LYVxfuNBVfSI6dpcOU9D4J
+
 
 # DOCENTE
 
@@ -20,6 +21,7 @@
 - Canal Youtube: https://www.youtube.com/c/DesarrollaSoftware
 - Grupo FaceBook: https://www.facebook.com/groups/desarrollasoftware/
 - UDEMY: https://github.com/gcoronelc/UDEMY
+
 
 # RECURSOS EN YUTUBE
 
