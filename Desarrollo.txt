@@ -1,3 +1,7 @@
+Correo: egcc.uni@gmail.com
+Asunto: CEPSUNI - SQL Server | - Tarea 01
+
+
 
 SEMANA 01
 =============================================
@@ -9,7 +13,7 @@ SEMANA 01
 
 
 
-Tarea 01:
+Tarea 01: 11.SET.2020
 -------------------------------
 - Lab 1
 - Lab 2
