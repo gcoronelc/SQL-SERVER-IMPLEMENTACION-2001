@@ -19,6 +19,9 @@ CREATE TABLE maestros.articulo (
 )
 GO
 
+/*
+* CLAVE PRIMARIA
+*/
 
 ALTER TABLE MAESTROS.ARTICULO 
 ADD CONSTRAINT PK_ARTICULO 
@@ -74,6 +77,82 @@ GO
 
 
 SET IDENTITY_INSERT MAESTROS.ARTICULO OFF
+GO
+
+/*
+* RESTRICCIÓN TIPO: UNIQUE
+*/
+
+
+ALTER TABLE MAESTROS.ARTICULO
+ADD CONSTRAINT U_ARTICULO_NOMBRE
+UNIQUE ( ART_NOMBRE );
+GO
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'TELEVISOR DE 50 PULG', 790.0, 1799.0, 600 );
+GO
+
+/*
+Msg 2627, Level 14, State 1, Line 92
+Infracción de la restricción UNIQUE KEY 'U_ARTICULO_NOMBRE'. 
+No se puede insertar una clave duplicada en el objeto 'MAESTROS.articulo'. 
+El valor de la clave duplicada es (TELEVISOR DE 50 PULG).
+Se terminó la instrucción.
+*/
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'LAPTOP', 570.0, 1300.0, 200 );
+GO
+
+SELECT * FROM MAESTROS.ARTICULO;
+GO
+
+
+/*
+* Restricción tipo CHECK
+*/
+
+ALTER TABLE MAESTROS.ARTICULO 
+ADD CONSTRAINT CHK_ARTICULO_PRE_COSTO
+CHECK ( ART_PRE_COSTO > 0.0 );
+GO
+
+ALTER TABLE MAESTROS.ARTICULO 
+ADD CONSTRAINT CHK_ARTICULO_STOCK
+CHECK ( ART_STOCK >= 0 );
+GO
+
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'IMPRESORA', 0, 350.0,	-300 );
+GO
+
+/*
+Msg 547, Level 16, State 0, Line 127
+Instrucción INSERT en conflicto con la restricción CHECK 'CHK_ARTICULO_PRE_COSTO'. 
+El conflicto ha aparecido en la base de datos 'TIENDA', 
+tabla 'MAESTROS.articulo', column 'art_pre_costo'.
+Se terminó la instrucción.
+*/
+
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'IMPRESORA', 175.0, 350.0,	-300 );
+GO
+
+/*
+Msg 547, Level 16, State 0, Line 140
+Instrucción INSERT en conflicto con la restricción CHECK 'CHK_ARTICULO_STOCK'. 
+El conflicto ha aparecido en la base de datos 'TIENDA', tabla 'MAESTROS.articulo', column 'art_stock'.
+Se terminó la instrucción.
+*/
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'IMPRESORA', 175.0, 350.0,	300 );
+GO
+
+SELECT * FROM MAESTROS.ARTICULO;
 GO
 
 
