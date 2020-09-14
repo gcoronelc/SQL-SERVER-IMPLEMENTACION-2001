@@ -251,6 +251,15 @@ Se terminó la instrucción.
 */
 
 
+EXEC sp_rename 'MAESTROS.DF_ARTICULO_DCTO', 'DF_DCTO_ARTICULO';  
+GO  
+
+
+
+
+
+
+
 
 
 
