@@ -254,13 +254,46 @@ Se terminó la instrucción.
 EXEC sp_rename 'MAESTROS.DF_ARTICULO_DCTO', 'DF_DCTO_ARTICULO';  
 GO  
 
+-- ON DELETE CASCADE
+
+select * from dbo.cliente;
+
+select * from dbo.pedido;
+
+-- Elimina el cliente y el pedido
+
+delete from dbo.cliente 
+where ClienteId = 'C0002';
+go
 
 
+-- ON DELETE no action
 
 
+INSERT INTO DBO.Cliente VALUES( 'C0002', 'Claudia Suares', 'clauida@gmail.com' );
+GO
+
+insert into dbo.pedido( fecha, clienteid, importe ) values( '20200120', 'C0002', 5890.0 );
+go
+
+ 
+delete from dbo.cliente 
+where ClienteId = 'C0002';
+go
 
 
+-- Update cascade
 
 
+select * from dbo.cliente;
+select * from dbo.pedido;
+go
 
+update dbo.cliente 
+set clienteid = '77777'
+where clienteid = 'C0002';
+go
+
+
+( (nota is null) OR ( nota between 0 and 20) )
 
