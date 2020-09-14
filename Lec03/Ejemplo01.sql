@@ -156,6 +156,102 @@ SELECT * FROM MAESTROS.ARTICULO;
 GO
 
 
+/*
+*  DEFAULT
+*/
+
+ALTER TABLE MAESTROS.ARTICULO 
+ADD ART_DCTO MONEY NOT NULL DEFAULT 0.0;
+GO
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'CAMARA DIGITAL', 489.0, 988.0,	377 );
+GO
+
+
+SELECT * FROM MAESTROS.ARTICULO;
+GO
+
+
+/*
+* CHECK PARA INTEGRIDAD DE ENTIDAD
+* El check compara dos o mas columnas de la misma tabla
+*/
+
+alter table maestros.articulo 
+add constraint chk_articulo_precio
+check ( art_pre_venta >= (art_pre_costo - art_dcto) );
+go
+
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'REPRODUCTOR MP4', 570.0, 500.0, 55 );
+GO
+
+/*
+Msg 547, Level 16, State 0, Line 187
+Instrucción INSERT en conflicto con la restricción CHECK 'chk_articulo_precio'. 
+El conflicto ha aparecido en la base de datos 'TIENDA', tabla 'MAESTROS.articulo'.
+Se terminó la instrucción.
+*/
+
+
+INSERT INTO MAESTROS.ARTICULO (art_nombre, art_pre_costo, art_pre_venta, art_stock)
+VALUES( 'REPRODUCTOR MP4', 570.0, 850.0, 55 );
+GO
+
+
+/*
+*  FOREIGN KEY
+*/
+
+CREATE TABLE Cliente(
+	ClienteId CHAR(5) NOT NULL   CONSTRAINT pk_cliente PRIMARY KEY,
+	Nombre VARCHAR(100) NOT NULL CONSTRAINT u_cliente_nombre UNIQUE,
+	Email VARCHAR(100) NOT NULL  CONSTRAINT u_cliente_email UNIQUE
+)
+GO
+
+CREATE TABLE Pedido( 
+	PedidoId INT NOT NULL IDENTITY(1000,1) CONSTRAINT pk_pedido PRIMARY KEY,
+	Fecha DATE NOT NULL,
+	ClienteId CHAR(5) NOT NULL,
+	Importe MONEY NOT NULL CONSTRAINT chk_pedido_importe CHECK(Importe>0),
+	CONSTRAINT fk_pedido_cliente 
+		FOREIGN KEY ( ClienteId )
+		REFERENCES Cliente 
+		ON DELETE NO ACTION 
+		ON UPDATE NO ACTION
+)
+GO
+
+
+INSERT INTO DBO.Cliente VALUES( 'C0001', 'Gustavo Coronel', 'gustavo@gmail.com' );
+INSERT INTO DBO.Cliente VALUES( 'C0002', 'Claudia Suares', 'clauida@gmail.com' );
+INSERT INTO DBO.Cliente VALUES( 'C0003', 'Ricardo Rojas', 'ricardo@gmail.com' );
+go
+
+select * from dbo.cliente;
+go
+
+insert into dbo.pedido( fecha, clienteid, importe ) values( '20200120', 'C0002', 5890.0 );
+go
+
+select * from dbo.pedido;
+go
+
+insert into dbo.pedido( fecha, clienteid, importe ) values( '20200122', 'C0022', 3684.0 );
+go
+
+/*
+Msg 547, Level 16, State 0, Line 243
+Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'fk_pedido_cliente'. 
+El conflicto ha aparecido en la base de datos 'TIENDA', tabla 'dbo.Cliente', column 'ClienteId'.
+Se terminó la instrucción.
+*/
+
+
+
 
 
 
