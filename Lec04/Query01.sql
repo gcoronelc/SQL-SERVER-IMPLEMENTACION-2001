@@ -37,11 +37,32 @@ go
 -- Ejercicio 01
 /*
 Se necesita una tabla de nombre EMP_1987, que tenga todos 
-los empleados que ingresaron en el año 1987.
+los empleados que ingresaron en el año 1993.
 BD: NORTHWIND
 */
 
+-- Durand
 
+USE Northwind;
+GO
+
+SELECT * INTO dbo.EMP_1993
+FROM dbo.Employees
+WHERE DATEDIFF(YEAR,HireDate,'19930101')=0;
+GO
+
+select * from Northwind.dbo.Employees;
+go
+
+select * from dbo.EMP_1993;
+go
+
+
+select 
+	BirthDate, DATEDIFF(year,BirthDate,GETDATE()) Edad,
+	HireDate, DATEDIFF(year,HireDate,GETDATE()) [Tiempo de Servicio]
+from Northwind.dbo.Employees;
+go
 
 
 
