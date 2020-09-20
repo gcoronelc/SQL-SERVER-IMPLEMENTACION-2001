@@ -51,10 +51,18 @@ FROM dbo.Employees
 WHERE DATEDIFF(YEAR,HireDate,'19930101')=0;
 GO
 
+SELECT * INTO dbo.EMP_1994
+FROM dbo.Employees
+WHERE year(hiredate) = 1994;     --DATEDIFF(YEAR,HireDate,'19940101')=0;
+GO
+
 select * from Northwind.dbo.Employees;
 go
 
 select * from dbo.EMP_1993;
+go
+
+select * from dbo.EMP_1994;
 go
 
 
@@ -66,10 +74,80 @@ go
 
 
 
+USE RH
+GO
+
+
+select * into dbo.cargo_aux from dbo.cargo;
+go
+
+select * from dbo.cargo_aux;
+go
+
+DELETE FROM dbo.cargo_aux
+WHERE idcargo = 'C10';
+GO
+
+
+-- Recomendación
+
+-- Inicio de Tx
+begin tran;
+go
+
+select @@TRANCOUNT;
+go
+
+select * from dbo.cargo_aux;
+go
+
+DELETE FROM dbo.cargo_aux
+WHERE idcargo = 'C09';
+GO
+
+-- Cancela todo
+rollback tran;
+go
+
+-- Confirmar todo
+commit tran;
+go
+
+
+
+begin tran;
+go
+
+select * from rh.dbo.empleado;
+
+update rh.dbo.empleado
+set sueldo = 35000
+where  idempleado = 'E0001';
+GO
+
+rollback tran;
+go
+
+COMMIT TRAN;
+GO
 
 
 
 
+USE RH;
+GO
 
+SELECT * FROM DBO.cargo;
+GO
+
+BEGIN TRAN;
+GO
+
+UPDATE dbo.cargo SET idcargo = 'C99'
+WHERE idcargo = 'C10';
+GO
+
+ROLLBACK TRAN;
+GO
 
 
