@@ -151,3 +151,23 @@ ROLLBACK TRAN;
 GO
 
 
+
+BEGIN TRAN;
+GO
+
+SELECT @@TRANCOUNT;
+GO
+
+SELECT * FROM DBO.CARGO;
+GO
+
+DELETE FROM dbo.cargo
+WHERE idcargo = 'C02';
+GO
+
+DELETE FROM dbo.cargo
+WHERE idcargo = 'C10';
+GO
+
+ROLLBACK TRAN;
+GO
