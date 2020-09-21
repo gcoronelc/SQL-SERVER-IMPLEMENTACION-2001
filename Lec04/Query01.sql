@@ -171,3 +171,93 @@ GO
 
 ROLLBACK TRAN;
 GO
+
+
+USE RH
+GO
+
+SET DATEFORMAT DMY;
+GO
+
+INSERT INTO dbo.empleado ( idempleado , apellido, nombre, fecingreso , idcargo ,
+iddepartamento , sueldo ) VALUES ( 'E8888', 'Ramos', 'Enrique', '30-05-2011', 'C77', 104, 4000.0 )
+GO
+
+SELECT * FROM DBO.CARGO;
+GO
+
+
+-- =================================================================
+-- TRANSACCIONES
+-- =================================================================
+
+BEGIN TRAN;
+GO
+
+SELECT @@TRANCOUNT;
+GO
+
+SELECT * FROM DBO.EMPLEADO WHERE IDEMPLEADO = 'E0001';
+GO
+
+update rh.dbo.empleado
+set sueldo = 45000
+where  idempleado = 'E0001';
+GO
+
+
+ROLLBACK TRAN;
+GO
+
+
+SELECT * FROM DBO.EMPLEADO WHERE IDEMPLEADO = 'E0001';
+GO
+
+
+-- ===========================================================================
+-- TRANSACCIONES IMPLICITAS
+-- ===========================================================================
+
+ROLLBACK;
+GO
+
+SET IMPLICIT_TRANSACTIONS ON;
+GO
+
+SELECT @@TRANCOUNT;
+GO
+
+-- Rpta: 0
+
+update rh.dbo.empleado
+set sueldo = 45000
+where  idempleado = 'E0001';
+GO
+
+SELECT @@TRANCOUNT;
+GO
+
+-- Rpta: 1
+
+update rh.dbo.empleado
+set sueldo = 40000
+where  idempleado = 'E0002';
+GO
+
+SELECT @@TRANCOUNT;
+GO
+
+-- Rpta: 1
+
+rollback;
+go
+
+
+select * from dbo.empleado;
+go
+
+
+
+
+rollback;
+
