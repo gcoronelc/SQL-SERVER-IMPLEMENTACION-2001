@@ -65,3 +65,51 @@ where idcargo = 'C01' OR idcargo = 'C02';
 GO 
 
 
+-- =====================================================
+-- Operadores relacionales / Operadores de comparación
+-- =, <, <=, >, >=, <>
+-- Permiten construir una condición simple
+-- =====================================================
+
+/*
+Ejercicio 10
+Desarrollar una sentencia SELECT para consultar los empleados 
+de contabilidad cuyo sueldo es mayor a 10,000.00. 
+Base de datos RH.
+*/
+
+select * from rh.dbo.empleado
+where (iddepartamento = 101) AND (sueldo > 10000.0);
+go
+
+
+/*
+Ejercicio 11
+Desarrollar una sentencia SELECT que permita averiguar los cursos 
+que aún no tienen profesor. Base de datos EDUCA.
+*/
+
+select * from educa.dbo.CURSO;
+go
+
+select * from educa.dbo.CURSO where cur_profesor is null
+union
+select * from educa.dbo.CURSO where cur_profesor = '';
+go
+
+select * from educa.dbo.CURSO 
+where cur_profesor is null OR cur_profesor = '';
+go
+
+SELECT ISNULL('GANDOR','ES NULO');
+GO
+
+SELECT ISNULL(NULL,'ES NULO');
+GO
+
+select * from educa.dbo.CURSO 
+where ISNULL(cur_profesor,'') = '';
+go
+
+
+
