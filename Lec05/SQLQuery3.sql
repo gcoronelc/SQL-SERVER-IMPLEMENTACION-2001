@@ -98,7 +98,7 @@ select * from educa.dbo.CURSO where cur_profesor = '';
 go
 
 select * from educa.dbo.CURSO 
-where cur_profesor is null OR cur_profesor = '';
+where (cur_profesor is null) OR (cur_profesor = '');
 go
 
 SELECT ISNULL('GANDOR','ES NULO');
@@ -110,6 +110,52 @@ GO
 select * from educa.dbo.CURSO 
 where ISNULL(cur_profesor,'') = '';
 go
+
+
+-- =====================================================
+-- Operadores Lógicos
+-- AND OR NOT
+-- Permiten construir una condición complejas
+-- =====================================================
+
+/*
+Problema 12
+Desarrollar una sentencia SELECT que permita averiguar los cursos 
+que aún no tienen alumnos matriculados. Base de datos EDUCA.
+*/
+
+select * from educa.dbo.CURSO WHERE cur_matriculados = 0;
+go
+
+
+
+-- =======================================================
+-- Operadores LIKE, BETWEEN, IN
+-- 
+--      <columna> [NOT] LIKE 'patron' 
+-- 
+-- =======================================================
+
+
+select * from rh.dbo.empleado where nombre like 'A%';
+go
+
+select * from rh.dbo.empleado where nombre like '%O';
+go
+
+select * from rh.dbo.empleado where nombre like '_E%';
+go
+
+select * from rh.dbo.empleado where nombre like '__[AEIOU]%';
+go
+
+select * from rh.dbo.empleado where telefono like '_[1-3]%';
+go
+
+select * from rh.dbo.empleado 
+where convert(varchar,fecingreso,103) like '__/05/2000';
+go
+
 
 
 
