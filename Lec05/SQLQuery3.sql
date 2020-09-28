@@ -282,6 +282,65 @@ de los departamentos de contabilidad y ventas.
 Base de datos RH.
 */
 
+/* Huaman */
+select*from rh.dbo.empleado
+where iddepartamento='101' or iddepartamento='103'
+order by iddepartamento
+go
+
+
+/*
+Problema 18.
+Desarrollar una sentencia SELECT para consultar los empleados cuyos 
+ingresos totales es menor a 8,000.00. Base de datos RH.
+*/
+
+select 800 + null Resultado;
+go
+
+select e.*, sueldo + isnull(comision,0) total
+from rh.dbo.empleado e;
+go
+
+
+/* datepart */
+
+select DATEPART(year, getdate() );
+go
+
+select DATEPART(month, getdate() );
+go
+
+select DATEPART(qq, getdate() );
+go
+
+
+/*
+Problema 19.
+Desarrollar una sentencia SELECT para consultar los empleados 
+que ingresaron a la empresa un mes de enero. Base de datos RH.
+*/
+
+
+
+/*
+Problema 20.
+Desarrollar una sentencia SELECT para consultar las matrículas 
+del último mes. Base de datos EDUCA.
+*/
+
+
+select * from educa.dbo.MATRICULA
+go
+
+select * from educa.dbo.MATRICULA
+where year(mat_fecha) = year(getdate()) and month(mat_fecha) = month(getdate());
+go
+
+
+
+
+
 
 
 
