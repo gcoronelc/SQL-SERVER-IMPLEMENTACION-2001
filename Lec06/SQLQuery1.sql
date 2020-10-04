@@ -152,3 +152,29 @@ where iddepartamento in (select iddepartamento from v1);
 go
 
 
+/*
+GROUP BY
+Sirve para hacer resumenes por grupos y subgrupos.
+*/
+
+select idalu, avg(isnull(nota,0)) promedio
+from notas 
+group by idalu;
+go
+
+/*
+5.	Desarrolle una sentencia SELECT para encontrar el salario promedio 
+por departamento. Base de datos RH.
+*/
+
+select iddepartamento, avg(sueldo) "sueldo promedio"
+from rh.dbo.empleado
+group by iddepartamento;
+go
+
+
+/* 
+RETO
+Cuál es el departamento con menor salario promedio 
+*/
+
