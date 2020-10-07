@@ -9,7 +9,7 @@
 - Inicio: 06-SET-2020
 - Duración: 24 Horas
 - Dirección: https://goo.gl/maps/PyC3Ek8MXW3bVZoC7
-- Canal Youtube: https://bit.ly/2HhmZCE
+- Canal Youtube: https://www.youtube.com/channel/UC7c3C0Dtr6HnSpxAAWN643A?sub_confirmation=1
 - Recursos: http://gcoronelc.blogspot.com/p/sql-server.html
 - Grupo de WS: https://chat.whatsapp.com/LYVxfuNBVfSI6dpcOU9D4J
 
